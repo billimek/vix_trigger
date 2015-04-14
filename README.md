@@ -1,5 +1,5 @@
 # Purpose
-The purpose of this script is to provide a daily 'report' on the VIX index for possible buy & sell triggers based on the `Larry Connors 'CVR' reversal indicators`.
+The purpose of this script is to provide a daily 'report' on the VIX index for possible buy & sell triggers based on the _Larry Connors 'CVR' reversal indicators_.
 
 This particular implementation examines the recent 15-period VIX daily high & low values and applies the following rules:
 
