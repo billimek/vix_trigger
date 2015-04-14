@@ -14,3 +14,8 @@ The script is intended to be every weekday at 4:!5pm ET
 
 
 ## Example output
+Normal example:
+![](https://raw.githubusercontent.com/billimek/vix_trigger/master/images/daily_vix_normal.png)
+
+Sell indicator example:
+![](https://raw.githubusercontent.com/billimek/vix_trigger/master/images/sell_trigger_example.png)
