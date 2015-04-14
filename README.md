@@ -10,12 +10,16 @@ It makes use of the yahoo stock quotes python library to scrape the necessary da
 
 The script will create a URL for the specific chart from stockcharts.com linked to an in-line image of the same chart and sent in an email.
 
-The script is intended to be every weekday at 4:!5pm ET
+The script is intended to be every weekday at 4:15pm ET
 
 
 ## Example output
 Normal example:
+
 ![](https://raw.githubusercontent.com/billimek/vix_trigger/master/images/daily_vix_normal.png)
 
+
+
 Sell indicator example:
+
 ![](https://raw.githubusercontent.com/billimek/vix_trigger/master/images/sell_trigger_example.png)
