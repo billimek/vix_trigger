@@ -1,7 +1,4 @@
-#!/opt/local/bin/python2.7
-
-
-###/usr/bin/env python
+#!/usr/bin/env python
 
 import sys
 import datetime
@@ -45,8 +42,11 @@ def isNewHigh(high, data):
     Returns True if the 'high' is higher than any of the highs in the data
     array passed in. Otherwise returns False
     """
-    for i in range(1, days_back):
-        if float(data[i][2]) >= float(high):
+    for k, v in data.iteritems():
+        try:
+            if (float(v['High'])) >= float(high):
+                return False
+        except ValueError:
             return False
     return True
 
@@ -55,8 +55,11 @@ def isNewLow(low, data):
     Returns True if the 'low' is lower than any of the lows in the data
     array passed in. Otherwise returns False
     """
-    for i in range(1, days_back):
-        if (float(data[i][3]) <= float(low)):
+    for k, v in data.iteritems():
+        try:
+            if (float(v['Low'])) <= float(low):
+                return False
+        except ValueError:
             return False
     return True
 
@@ -116,17 +119,18 @@ end = current_datetime - datetime.timedelta(days=1)
 start = current_datetime - datetime.timedelta(days=30)
 
 # fetch the historical data from yahoo
-data = ystockquote.get_historical_prices('^' + SYMBOL, start.strftime("%Y%m%d"), end.strftime("%Y%m%d"))
+data = ystockquote.get_historical_prices('^' + SYMBOL, start.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d"))
+all_data = ystockquote.get_all('^' + SYMBOL)
 
 # validate that we have enough historical data to continue
 if len(data) < days_back:
     print 'Not enough historical data available to continue (need at least 15 days of market data)'
     sys.exit(1)
 
-current = ystockquote.get_price('^' + SYMBOL)
-open = ystockquote.get_open('^' + SYMBOL)
-high = ystockquote.get_high('^' + SYMBOL)
-low = ystockquote.get_low('^' + SYMBOL)
+current = ystockquote.get_last_trade_price('^' + SYMBOL)
+open = float(all_data['today_open'])
+high = float(all_data['todays_high'])
+low = all_data['todays_low']
 
 # if the current price is higher than the open and today is a new 15-day low,
 # then this is a SELL indicator
