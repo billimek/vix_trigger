@@ -150,7 +150,8 @@ print(data)
 all_data = vix.history(period="1mo", interval="1d")
 # validate that we have enough historical data to continue
 
-if len(data) < days_back:
+# Checking an arbritary section of data for length
+if len(data.get("Close")) < days_back:
     print(
         "Not enough historical data available to continue (need at least 15 days of market data)"
     )
