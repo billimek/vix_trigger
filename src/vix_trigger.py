@@ -9,7 +9,6 @@ from email.mime.text import MIMEText
 
 import requests
 import yfinance as yf
-from pandas.core.internals.construction import to_arrays
 
 COMMASPACE = ", "
 
